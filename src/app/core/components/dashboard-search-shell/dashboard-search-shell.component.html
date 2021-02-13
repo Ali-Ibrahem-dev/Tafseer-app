@@ -1,0 +1,32 @@
+<dx-toolbar class="bg-info"> </dx-toolbar>
+<div class="container  py-4" [ngClass]="{'hide': showdetails, 'show': !showdetails}">
+    <div class="border py-2">
+        <app-dashboard-search-form
+            (OnFilter)="OnSubmit($event)"
+            (OnResetSearch)="OnReset()"
+            [DreamStatus]="DreamStatus"
+            [PaymentTypes]="PaymentTypes"
+        ></app-dashboard-search-form>
+    </div>
+
+    <div class="border py-2 px-2">   
+        <app-dashboard-search-list
+            #listRef
+            (OpenItem)="OpenItem($event)"
+        ></app-dashboard-search-list>
+    </div>
+
+</div>
+
+<div class="container  py-4" [ngClass]="{'show': showdetails, 'hide': !showdetails}">
+    <div class="border py-2 px-3">
+        <app-dashboard-dream-details
+            #detailsform
+            (replyOnDream)="replyOnDream($event)"
+            (backToSearchPage)="backToSearchPage()"
+        ></app-dashboard-dream-details>
+    </div>
+</div>
+
+
+

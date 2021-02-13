@@ -1,0 +1,126 @@
+<form [formGroup]="DashBoardFilterForm" autocomplete="off">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-4 col-md-6">
+        <label>Status</label>
+        <dx-drop-down-box
+          formControlName="dreamStatusList"
+          [(value)] ="StatusList"
+          valueExpr="Name"
+          [deferRendering]="false"
+          displayExpr="Name"
+          [showClearButton]="false"
+          [dataSource]="DreamStatus">
+          <div *dxTemplate="let data of 'content'">
+            <dx-data-grid
+              #gridRef
+              [dataSource]="DreamStatus"
+              keyExpr="Name"
+              [(selectedRowKeys)]="StatusList"
+              [columnAutoWidth]="true"
+              [showBorders]="false"
+              height="100%"
+              [paging]="{ enabled: false }">
+
+              <dxo-search-panel
+                [visible]="true"
+                width="95%"
+                [placeholder]="'Search'"
+              ></dxo-search-panel>
+
+              <dxo-selection
+                selectAllMode="allPages"
+                showCheckBoxesMode="onClick"
+                mode="multiple"
+              ></dxo-selection>
+
+              <dxi-column
+                dataField="Name"
+                caption=" "
+              ></dxi-column>
+
+            </dx-data-grid>
+          </div>
+        </dx-drop-down-box>
+      </div>
+
+      <div class="col-lg-4 col-md-6">
+        <label>Payment</label>
+        <dx-drop-down-box
+          formControlName="dreamPaymentTypeList"
+          [(value)] ="PaymentTypeList"
+          valueExpr="Name"
+          [deferRendering]="false"
+          displayExpr="Name"
+          [showClearButton]="false"
+          [dataSource]="PaymentTypes">
+          <div *dxTemplate="let data of 'content'">
+            <dx-data-grid
+              #gridRef
+              [dataSource]="PaymentTypes"
+              keyExpr="Name"
+              [(selectedRowKeys)]="PaymentTypeList"
+              [columnAutoWidth]="true"
+              [showBorders]="false"
+              height="100%"
+              [paging]="{ enabled: false }">
+
+              <dxo-search-panel
+                [visible]="true"
+                width="95%"
+                [placeholder]="'Search'"
+              ></dxo-search-panel>
+
+              <dxo-selection
+                selectAllMode="allPages"
+                showCheckBoxesMode="onClick"
+                mode="multiple"
+              ></dxo-selection>
+
+              <dxi-column
+                dataField="Name"
+                caption=" "
+              ></dxi-column>
+
+            </dx-data-grid>
+          </div>
+        </dx-drop-down-box>
+      </div>
+
+
+      <div class="col-lg-4 col-md-6">
+          <label>Title</label>
+            <dx-text-box
+              formControlName="dreamTitle"
+              placeholder=" "
+          ></dx-text-box>
+      </div>
+      <div class="col-lg-6 col-md-12">
+          <label>Text</label>
+            <dx-text-box
+              formControlName="dreamText"
+              placeholder=" "
+          ></dx-text-box>
+      </div>
+    </div>
+    <div class="row  p-3 text-center">
+      <div class="mx-auto">
+        <dx-button
+          class="mr-1"
+          type="success"
+          icon="search"
+          [text]="'Search'"
+          (click)="OnFilter.emit(DashBoardFilterForm.value)">
+        </dx-button>
+        <dx-button
+          class="ml-1"
+          type="danger"
+          icon="undo"
+          [text]="'Reset'"
+          (click)="handleReset()">
+        </dx-button>  
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,34 @@
+
+<dx-data-grid
+  #gridRef
+  [disabled]="true"
+  [dataSource]="dataSource"
+  [showBorders]="true"
+  keyExpr="id"
+  height="100%"
+  width="100%"
+  [focusedRowEnabled]="true"
+  [columnAutoWidth]="true"
+  [noDataText]="'NoData'"
+  (onCellClick)="onCellClicked($event)"
+  >
+    <dxo-search-panel [visible]="true" [placeholder]="'Search'"></dxo-search-panel>
+    <dxi-column dataField="dreamTitle" dataType="string" [caption]="'Title'"></dxi-column>
+    <dxi-column dataField="dreamText" dataType="string" [caption]="'Text'"></dxi-column>
+    <dxi-column dataField="dreamStatus" dataType="string" [caption]="'Status'"></dxi-column>
+    <dxi-column dataField="dreamPaymentType" dataType="string" [caption]="'PaymentType'"></dxi-column>
+    <!-- <dxi-column dataField="messageTimestamp" dataType="string" [caption]="'DateInserted'"></dxi-column> -->
+   
+
+    <dxi-column type="buttons" cellTemplate="cellTemplate" [caption]="'Details'">
+    <div *dxTemplate="let cell of 'cellTemplate'">
+      <div class="tree-icon" [title]="'COMMON._Edit_'"><i  style="font-size:20px; color: black;" class="dx-icon-edit"></i></div>
+    </div>
+  </dxi-column>
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager
+    [showPageSizeSelector]="true"
+    [allowedPageSizes]="[5, 10, 20, 50]"
+    [showInfo]="false">
+  </dxo-pager>
+</dx-data-grid>

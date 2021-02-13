@@ -1,0 +1,87 @@
+
+<div class="row">
+    <div class="left  col-lg-4 col-sm-4">
+        <dx-list
+        class="list"
+        [dataSource]="replies"
+        [grouped]="false"
+        [searchEnabled]="true"
+        selectionMode="single"
+    >
+        <div *dxTemplate="let item of 'item'">
+            <div>
+                <dx-text-area
+                    [height]="200"
+                    [maxLength]="2000"
+                    [(value)]="item.replyNote"
+                    [readOnly]="true">
+                </dx-text-area>   
+            </div>
+        </div>
+    </dx-list>
+    </div>
+    <div class="right col-lg-8 col-sm-8">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <label>Title</label>
+                    <dx-text-box
+                        [(value)]="dreamTitle"
+                        placeholder=" "
+                        [readOnly]="true"
+                    ></dx-text-box>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <label>Text</label>
+                    <dx-text-box
+                        [(value)]="dreamText"
+                        placeholder=" "
+                        [readOnly]="true"
+                    ></dx-text-box>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <label>Status</label>
+                    <dx-text-box
+                        [(value)]="dreamStatus"
+                        placeholder=" "
+                        [readOnly]="true"
+                    ></dx-text-box>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <label>Gender</label>
+                    <dx-text-box
+                        [(value)]="dreamGender"
+                        placeholder=" "
+                        [readOnly]="true"
+                    ></dx-text-box>
+            </div>
+            <div class="col-12">
+                <label>Reply Note</label>
+                <dx-text-area
+                    [height]="200"
+                    [maxLength]="2000"
+                    [(value)]="replyNote">
+                </dx-text-area>
+            </div>
+        </div>
+        <div class="row  p-3 text-center">
+            <div class="mx-auto">
+            <dx-button
+                class="mr-1"
+                type="success"
+                icon="comment"
+                [text]="'Replay'"
+                (click)="replyOnDream.emit(collectData())">
+            </dx-button>
+            <dx-button
+                class="ml-1"
+                type="danger"
+                icon="redo"
+                [text]="'Back To Home Page'"
+                (click)="backToSearchPage.emit()">
+            </dx-button>  
+            </div>
+        </div>
+    </div>
+</div>
+
+
